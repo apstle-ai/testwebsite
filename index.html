@@ -1,220 +1,791 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Modern Site</title>
-  <!-- Link to Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-  <style>
-    /* Reset and basic styling */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      color: #333;
-    }
-    /* Header */
-    header {
-      background: #4285F4;
-      color: #fff;
-      padding: 1em 2em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    header .logo h2 {
-      margin: 0;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-    }
-    nav li {
-      margin-left: 1em;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #e0e0e0;
-    }
-    /* Hero Section */
-    .hero {
-      background: url('https://via.placeholder.com/1500x800') center/cover no-repeat;
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.4);
-    }
-    .hero h1 {
-      font-size: 3rem;
-      color: #fff;
-      z-index: 1;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-    }
-    /* Content Sections */
-    .content {
-      padding: 2em;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .content h2 {
-      margin-bottom: 1em;
-      font-size: 2rem;
-      border-bottom: 2px solid #4285F4;
-      display: inline-block;
-      padding-bottom: 0.2em;
-    }
-    /* Grid for Portfolio Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1em;
-    }
-    .card {
-      background: #f9f9f9;
-      border: 1px solid #e0e0e0;
-      border-radius: 4px;
-      padding: 1em;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    /* Code block styling */
-    .preview pre {
-      background-color: #F5F5F5;
-      padding: 10px;
-      border-radius: 4px;
-      overflow-x: auto;
-    }
-    .preview code {
-      font-family: monospace;
-    }
-    /* Footer */
-    footer {
-      background: #f8f8f8;
-      padding: 1em 2em;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-      nav ul {
-        flex-direction: column;
-      }
-      nav li {
-        margin: 0.5em 0;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern single-page showcase for GitHub Pages capabilities.">
+    <meta name="theme-color" content="#4a90e2"> <!-- PWA theme color -->
+
+    <title>Modern GitHub Pages Showcase</title>
+
+    <!-- Link to Manifest for PWA -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Preconnect hints for potential CDNs or APIs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://jsonplaceholder.typicode.com">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6KDR-EcNHPy+uZjoNGIfhTrNkJkhzXFm5XKjpUogMdNwoBFYaZE0UKYBpOys4EXHuPp2fsOA==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+
+    <!-- Embedded SVG Icons -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></symbol>
+        <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></symbol>
+        <symbol id="icon-api" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline><line x1="6" y1="12" x2="18" y2="12"></line></symbol>
+        <symbol id="icon-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></symbol>
+         <symbol id="icon-worker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8.3a4.3 4.3 0 0 1 7.1 1.8 4.3 4.3 0 0 1-3.5 6.9 4.3 4.3 0 1 1-7-6.7"/><path d="M8 15.7a4.3 4.3 0 0 1-7.1-1.8 4.3 4.3 0 0 1 3.5-6.9 4.3 4.3 0 1 1 7 6.7"/><path d="M12 12a4.3 4.3 0 1 1-3.4-6.9 4.3 4.3 0 0 1 6.8 3.5A4.3 4.3 0 0 1 12 12z"/></symbol>
+    </svg>
+
+    <style>
+        /* --- Global Styles & CSS Variables --- */
+        :root {
+            --font-family: 'Inter', sans-serif;
+
+            /* Light Theme (Default) */
+            --color-background: #f8f9fa;
+            --color-foreground: #ffffff;
+            --color-text-primary: #212529;
+            --color-text-secondary: #6c757d;
+            --color-border: #dee2e6;
+            --color-accent: #4a90e2;
+            --color-accent-hover: #357abd;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --gradient-bg: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        html[data-theme="dark"] {
+            --color-background: #1a1a1a;
+            --color-foreground: #2c2c2c;
+            --color-text-primary: #e9ecef;
+            --color-text-secondary: #adb5bd;
+            --color-border: #495057;
+            --color-accent: #58a6ff;
+            --color-accent-hover: #79b8ff;
+            --shadow-sm: 0 1px 3px rgba(255, 255, 255, 0.05);
+            --shadow-md: 0 4px 12px rgba(255, 255, 255, 0.08);
+            --gradient-bg: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: var(--color-accent-hover);
+            text-decoration: underline;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 0.75em;
+            line-height: 1.3;
+        }
+        h1 { font-size: 2.5rem; font-weight: 700;}
+        h2 { font-size: 2rem; font-weight: 500;}
+        h3 { font-size: 1.5rem; font-weight: 500;}
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            stroke-width: 0; /* Remove default stroke if fill is used */
+            transition: transform 0.2s ease;
+        }
+        button .icon {
+            stroke: currentColor; /* Ensure icons in buttons use button color */
+            fill: none;
+            stroke-width: 2;
+        }
+        button:hover .icon {
+             transform: scale(1.1);
+        }
+
+        /* --- Header --- */
+        .site-header {
+            background-color: var(--color-foreground);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            text-decoration: none;
+        }
+        .logo:hover {
+            text-decoration: none;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+        .main-nav a {
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .main-nav a:hover,
+        .main-nav a.active { /* Style for active route */
+            background-color: var(--color-accent);
+            color: #fff; /* Ensure text is white on accent bg */
+            text-decoration: none;
+        }
+        .main-nav a.active .icon,
+        .main-nav a:hover .icon {
+            color: #fff; /* Ensure icon is white on accent bg */
+             stroke: #fff;
+        }
+
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+        .theme-toggle:hover {
+            background-color: var(--color-accent-hover);
+            color: #fff;
+            border-color: var(--color-accent-hover);
+            transform: rotate(15deg);
+        }
+        .theme-toggle .icon {
+            width: 1.2em;
+            height: 1.2em;
+        }
+
+        /* --- Main Content Area --- */
+        main {
+            flex-grow: 1; /* Make main content grow to fill space */
+            padding: 2rem 0;
+        }
+
+        .content-section {
+            padding: 3rem 0;
+            border-bottom: 1px dashed var(--color-border);
+            display: none; /* Hidden by default, shown by router */
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+         .content-section:last-child {
+            border-bottom: none;
+         }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Welcome Section --- */
+        #welcome {
+            text-align: center;
+            background: var(--gradient-bg);
+            padding: 4rem 1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+        #welcome h1 {
+            color: var(--color-accent);
+        }
+
+        /* --- API Data Section --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .card {
+            background-color: var(--color-foreground);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            opacity: 0; /* Start hidden for Intersection Observer */
+            transform: translateY(30px);
+        }
+        .card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--color-accent);
+            font-size: 1.2rem;
+        }
+        .card p {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        .loading-indicator, .error-message {
+            text-align: center;
+            padding: 2rem;
+            font-style: italic;
+            color: var(--color-text-secondary);
+        }
+
+        /* --- WebGL Section --- */
+        #webgl-container {
+            width: 100%;
+            height: 400px; /* Adjust as needed */
+            background-color: var(--color-foreground);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        #webgl-container canvas {
+            display: block; /* Remove extra space below canvas */
+        }
+        .webgl-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+
+        /* --- Web Worker Section --- */
+        #worker-section button {
+            background-color: var(--color-accent);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-right: 1rem;
+        }
+        #worker-section button:hover {
+            background-color: var(--color-accent-hover);
+        }
+        #worker-output {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--color-foreground);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            min-height: 50px;
+            font-family: monospace;
+            white-space: pre-wrap;
+             color: var(--color-text-secondary);
+        }
+
+        /* --- Footer --- */
+        .site-footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem; /* Ensure space above footer */
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            h3 { font-size: 1.3rem; }
+
+            .site-header .container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                 gap: 0.5rem;
+            }
+             .main-nav a {
+                 padding: 0.4rem 0.6rem;
+             }
+             .content-section {
+                padding: 2rem 0;
+            }
+            #welcome {
+                padding: 3rem 1rem;
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo"><h2>My Modern Site</h2></div>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="hero" id="home">
-    <h1>Welcome to My Modern Site</h1>
-  </section>
+    <header class="site-header">
+        <div class="container">
+            <a href="#" class="logo">Modern Site</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#welcome" class="nav-link active"><svg class="icon"><use xlink:href="#icon-home"></use></svg> Home</a></li>
+                    <li><a href="#api-data" class="nav-link"><svg class="icon"><use xlink:href="#icon-api"></use></svg> API Data</a></li>
+                    <li><a href="#webgl-demo" class="nav-link"><svg class="icon"><use xlink:href="#icon-cube"></use></svg> WebGL</a></li>
+                    <li><a href="#worker-demo" class="nav-link"><svg class="icon"><use xlink:href="#icon-worker"></use></svg> Web Worker</a></li>
+                </ul>
+            </nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <svg class="icon icon-sun"><use xlink:href="#icon-sun"></use></svg>
+                <svg class="icon icon-moon"><use xlink:href="#icon-moon"></use></svg>
+            </button>
+        </div>
+    </header>
 
-  <section class="content" id="about">
-    <h2>About Me</h2>
-    <p>This static website demonstrates modern HTML5, CSS3, and JavaScript capabilities. It is fully responsive, uses CSS Grid for layout, and has a sticky header for navigation. GitHub Pages is an ideal host for this type of site.</p>
-  </section>
+    <main>
+        <!-- Content sections will be shown/hidden by JS based on hash -->
+        <section id="welcome" class="content-section active">
+            <div class="container">
+                <h1>Welcome to the Showcase!</h1>
+                <p>This single HTML page demonstrates various modern web features runnable on GitHub Pages.</p>
+                <p>Explore using the navigation above. Features include:</p>
+                <ul style="list-style: none; padding: 0; max-width: 400px; margin: 1rem auto; text-align: left;">
+                    <li><svg class="icon" style="color: var(--color-accent); margin-right: 5px;"><use xlink:href="#icon-api"></use></svg> Fetching & Rendering API Data</li>
+                    <li><svg class="icon" style="color: var(--color-accent); margin-right: 5px;"><use xlink:href="#icon-cube"></use></svg> Interactive 3D Graphics (WebGL)</li>
+                    <li><svg class="icon" style="color: var(--color-accent); margin-right: 5px;"><use xlink:href="#icon-worker"></use></svg> Background Processing (Web Worker)</li>
+                    <li><svg class="icon" style="color: var(--color-accent); margin-right: 5px;"><use xlink:href="#icon-moon"></use></svg> Dark/Light Mode Theme</li>
+                    <li>...and more client-side magic!</li>
+                </ul>
+            </div>
+        </section>
 
-  <section class="content" id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Project One</h3>
-        <p>A brief description of your first project goes here.</p>
-      </div>
-      <div class="card">
-        <h3>Project Two</h3>
-        <p>A brief description of your second project goes here.</p>
-      </div>
-      <div class="card">
-        <h3>Project Three</h3>
-        <p>A brief description of your third project goes here.</p>
-      </div>
-    </div>
-  </section>
+        <section id="api-data" class="content-section">
+            <div class="container">
+                <h2>Dynamic Content via Fetch API</h2>
+                <p>Loading sample posts from JSONPlaceholder API.</p>
+                <div id="api-content-grid" class="card-grid">
+                    <div class="loading-indicator">Loading data...</div>
+                    <!-- API data cards will be inserted here -->
+                </div>
+            </div>
+        </section>
 
-  <section class="content" id="contact">
-    <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/yourformid" method="POST">
-      <div>
-        <label for="name">Name:</label>
-        <input id="name" name="name" type="text" required>
-      </div>
-      <div>
-        <label for="email">Email:</label>
-        <input id="email" name="_replyto" type="email" required>
-      </div>
-      <div>
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-      </div>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+        <section id="webgl-demo" class="content-section">
+            <div class="container">
+                <h2>WebGL Demo with Three.js</h2>
+                <p>An interactive 3D cube rendered client-side.</p>
+                <div id="webgl-container">
+                     <div class="webgl-overlay">Drag to rotate</div>
+                    <!-- Three.js canvas will be inserted here -->
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 My Modern Site. All rights reserved.</p>
-  </footer>
+        <section id="worker-demo" class="content-section">
+             <div class="container" id="worker-section">
+                <h2>Web Worker Demonstration</h2>
+                <p>Offload a mock complex calculation to a background thread without freezing the UI.</p>
+                <button id="start-worker-btn">Start Mock Calculation</button>
+                <div id="worker-output">Worker output will appear here...</div>
+            </div>
+        </section>
+    </main>
 
-  <script>
-    // Smooth scrolling for navigation links
-    document.addEventListener('DOMContentLoaded', function () {
-      const links = document.querySelectorAll('nav a');
-      links.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 60,
-              behavior: 'smooth'
-            });
-          }
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="current-year"></span> Modern GitHub Pages Showcase. Built with HTML, CSS, and Vanilla JS.</p>
+             <p>Check the source code to see how it works!</p>
+        </div>
+    </footer>
+
+    <script>
+        'use strict';
+
+        // --- Utility Functions ---
+        const $ = (selector) => document.querySelector(selector);
+        const $$ = (selector) => document.querySelectorAll(selector);
+
+        // --- Theme Toggle ---
+        const themeToggleButton = $('#theme-toggle');
+        const sunIcon = $('.icon-sun');
+        const moonIcon = $('.icon-moon');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            if (theme === 'dark') {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            } else {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            }
+        }
+
+        themeToggleButton.addEventListener('click', () => {
+            const newTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
         });
-      });
-    });
-  </script>
+
+        // Initialize theme on load
+        setTheme(currentTheme);
+
+
+        // --- Client-Side Router Simulation ---
+        const contentSections = $$('.content-section');
+        const navLinks = $$('.nav-link');
+
+        function updateRouterView() {
+            const hash = window.location.hash || '#welcome'; // Default to #welcome
+            contentSections.forEach(section => {
+                if (`#${section.id}` === hash) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+
+            // Update active state on nav links
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === hash) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Special handling for loading API data only when section is active
+            if (hash === '#api-data' && !$('#api-data').dataset.loaded) {
+                loadApiData();
+                $('#api-data').dataset.loaded = 'true'; // Mark as loaded
+            }
+             // Special handling for initializing WebGL only when section is active
+             if (hash === '#webgl-demo' && !$('#webgl-demo').dataset.loaded) {
+                initWebGL();
+                $('#webgl-demo').dataset.loaded = 'true'; // Mark as loaded
+            }
+        }
+
+        window.addEventListener('hashchange', updateRouterView);
+        // Initial route update on page load
+        document.addEventListener('DOMContentLoaded', updateRouterView);
+
+
+        // --- API Data Fetching ---
+        const apiContentGrid = $('#api-content-grid');
+
+        async function loadApiData() {
+            apiContentGrid.innerHTML = '<div class="loading-indicator">Fetching posts...</div>';
+            try {
+                const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=12'); // Get 12 posts
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const posts = await response.json();
+                renderPosts(posts);
+            } catch (error) {
+                console.error('Failed to fetch API data:', error);
+                apiContentGrid.innerHTML = `<div class="error-message">Failed to load data. Error: ${error.message}</div>`;
+            }
+        }
+
+        function createPostCard(post) {
+            // Basic sanitization (more robust needed for real user content)
+            const escapeHTML = (str) => str.replace(/[&<>"']/g, (match) => ({
+                '&': '&', '<': '<', '>': '>', '"': '"', "'": '''
+            }[match]));
+
+             const card = document.createElement('div');
+             card.className = 'card animate-on-scroll'; // Add class for intersection observer
+             card.innerHTML = `
+                <h3>${escapeHTML(post.title)}</h3>
+                <p>${escapeHTML(post.body.substring(0, 100))}...</p>
+            `;
+            return card;
+        }
+
+        function renderPosts(posts) {
+            apiContentGrid.innerHTML = ''; // Clear loading/error message
+            if (!posts || posts.length === 0) {
+                 apiContentGrid.innerHTML = '<div class="error-message">No posts found.</div>';
+                 return;
+            }
+            posts.forEach(post => {
+                const cardElement = createPostCard(post);
+                apiContentGrid.appendChild(cardElement);
+            });
+            // After rendering, setup the intersection observer
+            setupIntersectionObserver();
+        }
+
+
+        // --- WebGL Demo (Three.js) ---
+        let webglInitialized = false;
+        function initWebGL() {
+            if (typeof THREE === 'undefined' || webglInitialized) return; // Ensure Three.js loaded and not already init
+            webglInitialized = true;
+
+            const container = $('#webgl-container');
+            if (!container) return;
+
+            // Scene
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color( document.documentElement.getAttribute('data-theme') === 'dark' ? 0x2c2c2c : 0xffffff ); // Match theme
+
+            // Camera
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.z = 3;
+
+            // Renderer
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
+
+            // Cube
+            const geometry = new THREE.BoxGeometry();
+            const material = new THREE.MeshStandardMaterial({ color: 0x4a90e2 }); // Use accent color
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+
+            // Light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            const pointLight = new THREE.PointLight(0xffffff, 0.8);
+            pointLight.position.set(5, 5, 5);
+            scene.add(pointLight);
+
+            // Interaction (basic drag rotation)
+            let isDragging = false;
+            let previousMousePosition = { x: 0, y: 0 };
+
+            renderer.domElement.addEventListener('mousedown', (e) => isDragging = true);
+            renderer.domElement.addEventListener('mouseup', (e) => isDragging = false);
+            renderer.domElement.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaMove = {
+                    x: e.offsetX - previousMousePosition.x,
+                    y: e.offsetY - previousMousePosition.y
+                };
+                cube.rotation.y += deltaMove.x * 0.01;
+                cube.rotation.x += deltaMove.y * 0.01;
+                previousMousePosition = { x: e.offsetX, y: e.offsetY };
+            });
+             renderer.domElement.addEventListener('mouseout', (e) => isDragging = false); // Stop dragging if mouse leaves
+
+
+            // Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+                if (!isDragging) { // Auto-rotate when not dragging
+                   cube.rotation.x += 0.005;
+                   cube.rotation.y += 0.005;
+                }
+                renderer.render(scene, camera);
+            }
+            animate();
+
+             // Handle theme change for background
+             const themeObserver = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+                         scene.background = new THREE.Color( document.documentElement.getAttribute('data-theme') === 'dark' ? 0x2c2c2c : 0xffffff );
+                    }
+                });
+            });
+            themeObserver.observe(document.documentElement, { attributes: true });
+
+
+            // Handle Resize
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        }
+
+
+        // --- Web Worker Demo ---
+        const startWorkerButton = $('#start-worker-btn');
+        const workerOutput = $('#worker-output');
+        let myWorker = null;
+
+        function createWorker() {
+            // Create worker code as a string
+            const workerCode = `
+                self.onmessage = function(e) {
+                    console.log('Worker: Message received from main script');
+                    const number = e.data;
+                    if (isNaN(number)) {
+                        postMessage('Worker: Please send a number.');
+                        return;
+                    }
+                    // Simulate complex calculation
+                    let result = 0;
+                    const startTime = Date.now();
+                    for (let i = 0; i < number * 10000000; i++) { // Heavy loop
+                         result += Math.sqrt(i) * Math.sin(i);
+                    }
+                    const endTime = Date.now();
+                    const duration = endTime - startTime;
+
+                    console.log('Worker: Posting message back to main script');
+                    postMessage(\`Worker: Calculation finished in \${duration}ms. Result (partial): \${result.toFixed(2)}\`);
+                };
+            `;
+            // Create a Blob from the string
+            const blob = new Blob([workerCode], { type: 'application/javascript' });
+            // Create an object URL from the Blob
+            const workerUrl = URL.createObjectURL(blob);
+            // Create the worker using the object URL
+            return new Worker(workerUrl);
+        }
+
+
+        startWorkerButton.addEventListener('click', () => {
+            if (!myWorker) {
+                 try {
+                    myWorker = createWorker();
+                    myWorker.onmessage = function(e) {
+                        console.log('Main: Message received from worker:', e.data);
+                        workerOutput.textContent = e.data;
+                        startWorkerButton.disabled = false;
+                        startWorkerButton.textContent = 'Start Mock Calculation';
+                         // Clean up the object URL after use? Sometimes needed.
+                        // URL.revokeObjectURL(myWorker.objectURL); // If we stored the URL on the worker instance
+                    };
+                    myWorker.onerror = function(e) {
+                         console.error('Main: Error from worker:', e);
+                         workerOutput.textContent = `Worker Error: ${e.message}`;
+                         startWorkerButton.disabled = false;
+                         startWorkerButton.textContent = 'Start Mock Calculation';
+                          myWorker = null; // Reset worker on error
+                    };
+                 } catch (error) {
+                    console.error("Main: Failed to create worker:", error);
+                    workerOutput.textContent = "Failed to initialize Web Worker.";
+                    return; // Exit if worker creation failed
+                 }
+            }
+
+            workerOutput.textContent = 'Main: Sending message to worker... (Calculating up to 500 million loops)';
+            startWorkerButton.disabled = true;
+            startWorkerButton.textContent = 'Calculating...';
+            myWorker.postMessage(50); // Send data to worker (simulate up to 50*10M = 500M)
+        });
+
+
+        // --- Intersection Observer for Animations ---
+        let observer;
+        function setupIntersectionObserver() {
+            const animatedElements = $$('.animate-on-scroll');
+            if (!animatedElements.length) return;
+
+            const observerOptions = {
+                root: null, // Use the viewport
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            };
+
+            observer = new IntersectionObserver(observerCallback, observerOptions);
+            animatedElements.forEach(el => observer.observe(el));
+        }
+        // Call initially in case elements are already in view
+        document.addEventListener('DOMContentLoaded', setupIntersectionObserver);
+
+
+        // --- Footer Year ---
+        $('#current-year').textContent = new Date().getFullYear();
+
+
+        // --- Service Worker Registration (PWA) ---
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js') // IMPORTANT: sw.js must exist at the root
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+
+    </script>
+
 </body>
 </html>
